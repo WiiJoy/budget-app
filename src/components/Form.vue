@@ -26,11 +26,14 @@ export default {
     name: 'Form',
     data: () => ({
         formData: {
-            type: 'INCOME',
+            type: '',
             comment: '',
             value: 0,
         },
         rules: {
+            type: [
+                {required: true, message: 'Please choose type', trigger: 'blur'},
+            ],
             comment: [
                 {required: true, message: 'Please input comment', trigger: 'blur'},
             ],

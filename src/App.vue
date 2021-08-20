@@ -52,6 +52,10 @@ export default {
         id: String(Math.random())
       };
 
+      if (newObj.type === 'OUTCOME') {
+        newObj.value = -newObj.value;
+      }
+
       this.$set(this.list, newObj.id, newObj);
     },
   },
