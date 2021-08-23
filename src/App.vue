@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Form @submitForm="onFormSubmit" />
-    <TotalBalance :total="totalBalance"/>
+    <TotalBalance :class="balanceSign" :total="totalBalance"></TotalBalance>
     <BudgetList :list="list" @deleteItem="onDeleteItem"/>
    
   </div>
@@ -38,7 +38,21 @@ export default {
   computed: {
     totalBalance() {
       console.log(Object.values(this.list).reduce((acc, item) => acc + item.value, 0));
-      return Object.values(this.list).reduce((acc, item) => acc + item.value, 0);
+      const balance = Object.values(this.list).reduce((acc, item) => acc + item.value, 0);
+      console.log(balance);
+
+
+      // return Object.values(this.list).reduce((acc, item) => acc + item.value, 0);
+      return balance;
+    },
+    balanceSign() {
+      let sign = 'zero';
+      if (this.totalBalance > 0) {
+        sign = 'positive'; 
+      } else if (this.totalBalance < 0) {
+        sign = 'negative';
+      }
+      return sign;      
     },
   },
   methods: {
@@ -70,5 +84,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.zero {
+  color: black;
+}
+.positive {
+  color: green;
+}
+.negative {
+  color: red;
 }
 </style>
