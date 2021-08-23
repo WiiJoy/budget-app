@@ -14,7 +14,7 @@
                     <el-button type="danger" size="mini" @click="deleteItem(item.id)">Delete</el-button>
                 </div> -->
             </template>
-            <el-alert v-else type="info" :title="emptyTitle" closable="false"/>
+            <el-alert v-else type="info" :title="emptyTitle" :closable="closable"/>
         </el-card>
     </div>
 </template>
@@ -36,6 +36,7 @@ export default {
     data: () => ({
         header: 'Budget List',
         emptyTitle: 'Empty List',
+        closable: false,
     }),
     computed: {
         isEmpty() {
