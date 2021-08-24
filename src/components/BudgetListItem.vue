@@ -3,11 +3,15 @@
         <i :class="arrowClass"></i>
         <span class="budget-comment">{{ budgetItem.comment }}</span>
         <span class="budget-value" :class="budgetItem.type.toLowerCase()">{{ budgetItem.value }}</span>
-        <el-button type="danger" size="mini" @click="deleteItem(budgetItem.id)">Delete</el-button>
+        <!-- <el-button type="danger" size="mini" @click="deleteItem(budgetItem.id)">Delete</el-button> -->
+        <el-button type="danger" size="mini" @click="deleteItemWithConfirm(budgetItem.id)">Delete</el-button>
     </div>
 </template>
 
 <script>
+import { MessageBox } from 'element-ui';
+import { Message } from 'element-ui';
+
 export default {
     name: 'BudgetListItem',
     props: {
@@ -26,8 +30,26 @@ export default {
         },
     },
     methods: {
-        deleteItem(id) {
-            this.$emit('deleteItem', id);
+        // deleteItem(id) {
+        //     this.$emit('deleteItem', id);
+        // },
+        deleteItemWithConfirm(id) {
+            MessageBox.confirm('This will permanently delete item. Continue?', 'Warning', {
+                confirmButtonText: 'OK',
+                cancelButtonText: 'Cancel',
+                type: 'warning'
+            }).then(() => {
+                this.$emit('deleteItem', id);
+                Message({
+                    type: 'success',
+                    message: 'Delete completed'
+                });
+            }).catch(() => {
+                Message({
+                    type: 'info',
+                    message: 'Delete canceled'
+                });          
+            });
         },
 
     },

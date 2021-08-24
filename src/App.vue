@@ -37,11 +37,9 @@ export default {
   }),
   computed: {
     totalBalance() {
-      console.log(Object.values(this.list).reduce((acc, item) => acc + item.value, 0));
+      // console.log(Object.values(this.list).reduce((acc, item) => acc + item.value, 0));
       const balance = Object.values(this.list).reduce((acc, item) => acc + item.value, 0);
-      console.log(balance);
-
-
+      // console.log(balance);
       // return Object.values(this.list).reduce((acc, item) => acc + item.value, 0);
       return balance;
     },
