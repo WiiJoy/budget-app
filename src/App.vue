@@ -63,7 +63,8 @@ export default {
       console.log(data);
       const newObj = {
         ...data,
-        id: String(Math.random())
+        id: String(Object.values(this.list).length + 1)
+        // id: String(Math.random())
       };
 
       if (newObj.type === 'OUTCOME') {

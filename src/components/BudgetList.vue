@@ -55,6 +55,7 @@ export default {
 
             for (let i = 1; i <= Object.keys(this.list).length; i++) {
                 console.log(i);
+                console.log(Object.keys(this.list));
                 console.log(this.list[i].type);
                 
 
