@@ -29,6 +29,7 @@ export default {
             type: '',
             comment: '',
             value: 0,
+            isItemVisible: true,
         },
         rules: {
             type: [
